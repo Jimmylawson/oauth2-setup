@@ -10,6 +10,5 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 public class CalResponseDto {
-
     private BigDecimal result;
 }

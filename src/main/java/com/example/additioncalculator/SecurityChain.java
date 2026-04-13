@@ -16,19 +16,22 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityChain {
 
-    private String keySetUri;
-
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http
 
                 .csrf(AbstractHttpConfigurer::disable)
+                .cors(Customizer.withDefaults())
+                .formLogin(AbstractHttpConfigurer::disable)
+                .httpBasic(AbstractHttpConfigurer::disable)
+                .headers(headers -> headers.frameOptions(frame -> frame.disable()))
                 .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> {
                     auth
                             .requestMatchers("/h2-console/**").permitAll()
                             .requestMatchers("/api/**").authenticated()
+
                             .anyRequest().permitAll();
 
                 })
