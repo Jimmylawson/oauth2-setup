@@ -1,26 +1,28 @@
 spring:
   application:
-    name:
-      additioncalculator
+    name: additioncalculator
 
-security:
-  oauth2:
-    resourceserver:
-      jwt:
-        issuer-uri: https://dev-wo2cxrvtjffmpl7d.us.auth0.com/api/v2/
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-wo2cxrvtjffmpl7d.us.auth0.com
 
-datasource:
-  url: jdbc:h2:mem:additioncalculator
-  driver-class-name: org.h2.Driver
-  username: sa
-  password:
-h2:
-  console:
-    enabled: true
-    path: /h2-console
-jpa:
-  hibernate:
-    ddl-auto: update
-  show-sql: true
+  datasource:
+    url: jdbc:h2:mem:additioncalculator
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
 server:
   port: 8080
